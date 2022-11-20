@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/components/base_bottom_nav_bar.dart';
+import 'package:revisa_ai_mobile/screens/store_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "/home";
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController pvController = PageController();
 
   final List<Widget> pageList = const [
-    Text("Loja"),
+    StoreScreen(),
     Text("Responder quiz"),
     Text("Meus quizes"),
     Text("Perfil"),
