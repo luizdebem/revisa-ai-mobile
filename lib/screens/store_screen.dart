@@ -24,7 +24,7 @@ class _StoreScreenState extends State<StoreScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.only(right: 25, top: 25),
+          padding: const EdgeInsets.only(right: 25, top: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: const [
@@ -84,12 +84,18 @@ class _StoreScreenState extends State<StoreScreen> {
                     child: Container(
                       width: double.infinity,
                       margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: const BoxDecoration(color: Colors.amber),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       child: Center(
                         child: Text(
                           i,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 16.0),
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
