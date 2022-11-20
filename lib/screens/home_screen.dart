@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/components/base_bottom_nav_bar.dart';
 import 'package:revisa_ai_mobile/screens/my_quizzes_screen.dart';
 import 'package:revisa_ai_mobile/screens/profile_screen.dart';
+import 'package:revisa_ai_mobile/screens/start_quiz_screen.dart';
 import 'package:revisa_ai_mobile/screens/store_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> pageList = const [
     StoreScreen(),
-    Text("Responder quiz"),
+    StartQuizScreen(),
     MyQuizzesScreen(),
     ProfileScreen(),
   ];
