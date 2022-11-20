@@ -27,17 +27,17 @@ class _StoreScreenState extends State<StoreScreen> {
           padding: const EdgeInsets.only(right: 25, top: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
+            children: [
               Icon(
                 Icons.paid_outlined,
-                color: Colors.green,
+                color: Theme.of(context).primaryColor,
               ),
-              SizedBox(width: 6),
+              const SizedBox(width: 6),
               Text(
                 "300",
                 style: TextStyle(
                   fontSize: 22,
-                  color: Colors.green,
+                  color: Theme.of(context).primaryColor,
                 ),
               )
             ],
