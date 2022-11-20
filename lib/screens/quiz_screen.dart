@@ -23,7 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
           children: [
             Expanded(
               child: ListView.separated(
-                itemCount: 15,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   return Question(index: index + 1);
                 },

@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController pvController = PageController();
+  final PageController pvController = PageController(initialPage: 1);
 
   final List<Widget> pageList = const [
     StoreScreen(),
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ProfileScreen(),
   ];
 
-  int currentScreenIndex = 0;
+  int currentScreenIndex = 1;
 
   void changeScreen(int newScreenIndex) {
     setState(() {
