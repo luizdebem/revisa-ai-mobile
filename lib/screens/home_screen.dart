@@ -10,11 +10,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final PageController pvController = PageController();
+
+  final List<Widget> pageList = const [
+    Text("Loja"),
+    Text("Responder quiz"),
+    Text("Meus quizes"),
+    Text("Perfil"),
+  ];
+
   int currentScreenIndex = 0;
 
   void changeScreen(int newScreenIndex) {
     setState(() {
       currentScreenIndex = newScreenIndex;
+      pvController.jumpToPage(newScreenIndex);
     });
   }
 
@@ -24,7 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Revisa Aí"),
       ),
-      body: const Text("Home Screen Router"),
+      body: PageView(
+        controller: pvController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: pageList,
+      ),
       bottomNavigationBar: BaseBottomNavBar(
         currentIndex: currentScreenIndex,
         onChangeIndex: changeScreen,
