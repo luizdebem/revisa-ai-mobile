@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/screens/home_screen.dart';
 import 'package:revisa_ai_mobile/screens/login_screen.dart';
 import 'package:revisa_ai_mobile/screens/quiz_screen.dart';
+import 'package:revisa_ai_mobile/screens/result_screen.dart';
 import 'package:revisa_ai_mobile/screens/signup_screen.dart';
 
 void main() {
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           SignupScreen.routeName: (context) => const SignupScreen(),
           HomeScreen.routeName: (context) => const HomeScreen(),
           QuizScreen.routeName: (context) => const QuizScreen(),
+          ResultScreen.routeName: (context) => const ResultScreen(),
         },
       ),
     );

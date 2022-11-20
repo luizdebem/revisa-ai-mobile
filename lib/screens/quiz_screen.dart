@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
 import 'package:revisa_ai_mobile/components/question.dart';
+import 'package:revisa_ai_mobile/screens/result_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   static const routeName = "/quiz";
@@ -31,7 +32,13 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
             ),
             const SizedBox(height: 15),
-            BaseButton(onPressed: () {}, child: const Text("ENVIAR RESPOSTAS")),
+            BaseButton(
+              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                ResultScreen.routeName,
+                (route) => false,
+              ),
+              child: const Text("ENVIAR RESPOSTAS"),
+            ),
             const SizedBox(height: 15),
           ],
         ),
