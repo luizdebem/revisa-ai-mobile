@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:revisa_ai_mobile/screens/quiz_screen.dart';
 
 class StartQuizScreen extends StatefulWidget {
   const StartQuizScreen({Key? key}) : super(key: key);
@@ -10,8 +11,8 @@ class StartQuizScreen extends StatefulWidget {
 }
 
 class _StartQuizScreenState extends State<StartQuizScreen> {
-  void goToQuiz(s) {
-    // go to quiz
+  void goToQuiz(_) {
+    Navigator.of(context).pushNamed(QuizScreen.routeName);
   }
 
   @override
@@ -22,7 +23,13 @@ class _StartQuizScreenState extends State<StartQuizScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text("Insira a senha do quiz para começar!"),
+          const Text(
+            "Insira a senha do quiz para começar!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
           const SizedBox(height: 20),
           PinCodeTextField(
             appContext: context,

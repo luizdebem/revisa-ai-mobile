@@ -45,7 +45,7 @@ class _StoreScreenState extends State<StoreScreen> {
         ),
         const Spacer(),
         const Text(
-          "Clique em um item da listagem para resgatar!",
+          "Clique em um item para resgatá-lo!",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 18,
