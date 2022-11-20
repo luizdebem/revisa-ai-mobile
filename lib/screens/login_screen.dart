@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
 import 'package:revisa_ai_mobile/components/base_text_field.dart';
+import 'package:revisa_ai_mobile/screens/home_screen.dart';
 import 'package:revisa_ai_mobile/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -50,6 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: BaseButton(
                           onPressed: () {
                             print("Submitted");
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              HomeScreen.routeName,
+                              (route) => false,
+                            );
                           },
                           child: const Text("ENTRAR"),
                         ),

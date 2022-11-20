@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revisa_ai_mobile/screens/home_screen.dart';
 import 'package:revisa_ai_mobile/screens/login_screen.dart';
 import 'package:revisa_ai_mobile/screens/signup_screen.dart';
 
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: LoginScreen.routeName,
+        initialRoute: HomeScreen.routeName,
         routes: {
           LoginScreen.routeName: (context) => const LoginScreen(),
           SignupScreen.routeName: (context) => const SignupScreen(),
+          HomeScreen.routeName: (context) => const HomeScreen(),
         },
       ),
     );
