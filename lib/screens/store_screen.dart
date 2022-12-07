@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class StoreScreen extends StatefulWidget {
@@ -93,7 +94,11 @@ class _StoreScreenState extends State<StoreScreen> {
                       width: double.infinity,
                       margin: const EdgeInsets.symmetric(horizontal: 5.0),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 3.0,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(

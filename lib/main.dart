@@ -1,16 +1,26 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:revisa_ai_mobile/screens/home_screen.dart';
 import 'package:revisa_ai_mobile/screens/login_screen.dart';
 import 'package:revisa_ai_mobile/screens/quiz_screen.dart';
 import 'package:revisa_ai_mobile/screens/result_screen.dart';
 import 'package:revisa_ai_mobile/screens/signup_screen.dart';
+import 'package:revisa_ai_mobile/services/login_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

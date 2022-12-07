@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
 import 'package:revisa_ai_mobile/components/base_text_field.dart';
 
@@ -11,6 +14,25 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    fetchUser();
+  }
+
+  Map user = {
+    "fullName": "",
+    "email": "",
+  };
+
+  fetchUser() {
+    final res = jsonDecode(LocalStorage("revisa_ai").getItem("user"));
+    setState(() {
+      user["fullName"] = res["fullName"];
+      user["email"] = res["email"];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,17 +50,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            const BaseTextField(
+            BaseTextField(
               name: "fullName",
               keyboardType: TextInputType.name,
               labelText: "Nome completo",
-              initialValue: "Luiz Guilherme de Bem",
+              initialValue: user["fullName"],
             ),
-            const BaseTextField(
+            BaseTextField(
               name: "email",
               keyboardType: TextInputType.name,
               labelText: "E-mail",
-              initialValue: "luizdebem99@gmail.com",
+              initialValue: user["email"],
             ),
             const BaseTextField(
               name: "newPassword",
