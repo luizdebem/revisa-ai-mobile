@@ -17,6 +17,14 @@ class _StoreScreenState extends State<StoreScreen> {
     "PlayStation Store\n\nCartão-presente de R\$50,00\n\nPreço: 1200 moedas",
   ];
 
+  final List<String> images = [
+    'images/uber.png',
+    'images/ifood.png',
+    'images/americanas.png',
+    'images/starbucks.png',
+    'images/playstationstore.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -88,15 +96,24 @@ class _StoreScreenState extends State<StoreScreen> {
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Center(
-                        child: Text(
-                          i,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            images[titles.indexOf(i)],
+                            height: 150,
                           ),
-                        ),
+                          const SizedBox(height: 12),
+                          Text(
+                            i,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   );
