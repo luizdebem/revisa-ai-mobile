@@ -1,7 +1,12 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:revisa_ai_mobile/helpers.dart';
 import 'package:revisa_ai_mobile/screens/quiz_screen.dart';
+import 'package:revisa_ai_mobile/services/quiz_service.dart';
 
 class StartQuizScreen extends StatefulWidget {
   const StartQuizScreen({Key? key}) : super(key: key);
@@ -11,8 +16,22 @@ class StartQuizScreen extends StatefulWidget {
 }
 
 class _StartQuizScreenState extends State<StartQuizScreen> {
-  void goToQuiz(_) {
-    Navigator.of(context).pushNamed(QuizScreen.routeName);
+  void goToQuiz(password) async {
+    try {
+      final res = await QuizService.find(password);
+      Navigator.of(context).pushNamed(
+        QuizScreen.routeName,
+        arguments: res.data[0],
+      );
+    } catch (e) {
+      if (e is DioError && e.response!.statusCode == 404) {
+        Helpers.showToast(msg: "Quiz não encontrado.", success: false);
+        return;
+      }
+      Helpers.showToast(msg: "Ocorreu um erro interno.", success: false);
+      return;
+    }
+    return;
   }
 
   @override
