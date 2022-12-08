@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
 import 'package:revisa_ai_mobile/components/base_text_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -25,8 +26,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     "email": "",
   };
 
-  fetchUser() {
-    final res = jsonDecode(LocalStorage("revisa_ai").getItem("user"));
+  fetchUser() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final res = jsonDecode(prefs.getString("user")!);
     setState(() {
       user["fullName"] = res["fullName"];
       user["email"] = res["email"];

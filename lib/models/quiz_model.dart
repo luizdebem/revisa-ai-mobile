@@ -76,7 +76,7 @@ class Quiz {
   set updatedAt(String? updatedAt) => _updatedAt = updatedAt;
 
   Quiz.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
+    _id = json['_id'];
     _title = json['title'];
     _description = json['description'];
     _expiryDate = json['expiryDate'];
@@ -95,7 +95,7 @@ class Quiz {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
+    data['_id'] = this._id;
     data['title'] = this._title;
     data['description'] = this._description;
     data['expiryDate'] = this._expiryDate;

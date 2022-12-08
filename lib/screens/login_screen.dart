@@ -11,6 +11,7 @@ import 'package:revisa_ai_mobile/helpers.dart';
 import 'package:revisa_ai_mobile/screens/home_screen.dart';
 import 'package:revisa_ai_mobile/screens/signup_screen.dart';
 import 'package:revisa_ai_mobile/services/login_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = "/login";
@@ -34,8 +35,11 @@ class _LoginScreenState extends State<LoginScreen> {
           await LoginService.login(_formKey.currentState!.value) as Response;
       final data = res.data;
 
-      LocalStorage("revisa_ai").setItem("accessToken", data["accessToken"]);
-      LocalStorage("revisa_ai").setItem("user", jsonEncode(data["user"]));
+      final prefs = await SharedPreferences.getInstance();
+
+      prefs.setString("accessToken", data["accessToken"]);
+      prefs.setString("user", jsonEncode(data["user"]));
+
       Navigator.of(context).pushNamedAndRemoveUntil(
         HomeScreen.routeName,
         (route) => false,

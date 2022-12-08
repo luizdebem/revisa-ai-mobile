@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
 import 'package:revisa_ai_mobile/components/question.dart';
 import 'package:revisa_ai_mobile/models/quiz_model.dart';
 import 'package:revisa_ai_mobile/screens/result_screen.dart';
+import 'package:revisa_ai_mobile/services/quiz_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuizScreen extends StatefulWidget {
   static const routeName = "/quiz";
@@ -26,14 +29,23 @@ class _QuizScreenState extends State<QuizScreen> {
     answers = quiz.questions!.asMap().map((k, v) => MapEntry(k, null));
   }
 
-  void submit() {
-    print("Respostas:");
-    print(answers.values.toList());
+  void submit() async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      final res = await QuizService.submit({
+        "studentId": jsonDecode(prefs.getString("user")!)["_id"],
+        "quizId": quiz.id,
+        "answers": answers.values.toList(),
+      });
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        ResultScreen.routeName,
+        (route) => false,
+        arguments: res.data,
+      );
+    } catch (e) {
+      print(e);
+    }
     return;
-    Navigator.of(context).pushNamedAndRemoveUntil(
-      ResultScreen.routeName,
-      (route) => false,
-    );
   }
 
   @override

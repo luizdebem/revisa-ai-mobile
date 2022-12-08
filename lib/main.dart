@@ -29,6 +29,10 @@ class _MyAppState extends State<MyApp> {
         title: 'Revisa Aí',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          textTheme: Theme.of(context).textTheme.apply(
+                fontSizeFactor: 1.1,
+                fontSizeDelta: 2.0,
+              ),
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: LoginScreen.routeName,

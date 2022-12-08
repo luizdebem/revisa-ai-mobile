@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/components/base_button.dart';
+import 'package:revisa_ai_mobile/models/answer_model.dart';
+import 'package:revisa_ai_mobile/models/quiz_model.dart';
 import 'package:revisa_ai_mobile/screens/home_screen.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -11,6 +15,19 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<ResultScreen> {
+  late Answer answer;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)!.settings.arguments;
+    answer = Answer.fromJson(jsonDecode(jsonEncode(args)));
+  }
+
+  String greetingMessage() {
+    return answer.score! >= 8.0 ? "Parabéns! Sua nota foi:" : "Sua nota foi:";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,18 +42,18 @@ class _ResultScreenState extends State<ResultScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text("Parabéns! Sua nota foi:"),
-                const Text(
-                  "10",
-                  style: TextStyle(fontSize: 150, color: Colors.blue),
+                Text(greetingMessage()),
+                Text(
+                  answer.score!.toStringAsFixed(1),
+                  style: const TextStyle(fontSize: 150, color: Colors.blue),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Pontuação recebida neste quiz: "),
+                  children: [
+                    const Text("Moedas recebidas neste quiz: "),
                     Text(
-                      "100 moedas.",
-                      style: TextStyle(color: Colors.blue),
+                      "${answer.prizeEarned!.toStringAsFixed(1)} moedas.",
+                      style: const TextStyle(color: Colors.blue),
                     ),
                   ],
                 ),
