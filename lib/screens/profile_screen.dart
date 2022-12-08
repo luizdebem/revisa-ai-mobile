@@ -15,24 +15,21 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String fullName = "";
+  String email = "";
+
   @override
   void initState() {
     super.initState();
     fetchUser();
   }
 
-  Map user = {
-    "fullName": "",
-    "email": "",
-  };
-
   fetchUser() async {
     final prefs = await SharedPreferences.getInstance();
-
     final res = jsonDecode(prefs.getString("user")!);
     setState(() {
-      user["fullName"] = res["fullName"];
-      user["email"] = res["email"];
+      fullName = res["fullName"];
+      email = res["email"];
     });
   }
 
@@ -57,13 +54,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               name: "fullName",
               keyboardType: TextInputType.name,
               labelText: "Nome completo",
-              initialValue: user["fullName"],
+              initialValue: "$fullName",
             ),
             BaseTextField(
               name: "email",
               keyboardType: TextInputType.name,
               labelText: "E-mail",
-              initialValue: user["email"],
+              initialValue: email,
             ),
             const BaseTextField(
               name: "newPassword",

@@ -44,7 +44,7 @@ class _ResultScreenState extends State<ResultScreen> {
               children: [
                 Text(greetingMessage()),
                 Text(
-                  answer.score!.toStringAsFixed(1),
+                  answer.score!.toString(),
                   style: const TextStyle(fontSize: 150, color: Colors.blue),
                 ),
                 Row(
@@ -52,7 +52,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   children: [
                     const Text("Moedas recebidas neste quiz: "),
                     Text(
-                      "${answer.prizeEarned!.toStringAsFixed(1)} moedas.",
+                      "${answer.prizeEarned!.toString()} moedas.",
                       style: const TextStyle(color: Colors.blue),
                     ),
                   ],

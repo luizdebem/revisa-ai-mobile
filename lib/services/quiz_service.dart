@@ -23,4 +23,17 @@ class QuizService {
       ),
     );
   }
+
+  static Future<Response<dynamic>> listByStudentId(String studentId) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    return HttpClient.dio().get(
+      "/answer/$studentId",
+      options: Options(
+        headers: {
+          "x-auth-token": prefs.getString("accessToken"),
+        },
+      ),
+    );
+  }
 }

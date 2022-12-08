@@ -2,8 +2,8 @@ class Answer {
   String? _studentId;
   String? _quizId;
   List<int>? _answers;
-  double? _score;
-  double? _prizeEarned;
+  num? _score;
+  num? _prizeEarned;
   String? _sId;
   String? _createdAt;
   String? _updatedAt;
@@ -12,8 +12,8 @@ class Answer {
     String? studentId,
     String? quizId,
     List<int>? answers,
-    double? score,
-    double? prizeEarned,
+    num? score,
+    num? prizeEarned,
     String? sId,
     String? createdAt,
     String? updatedAt,
@@ -50,10 +50,10 @@ class Answer {
   set quizId(String? quizId) => _quizId = quizId;
   List<int>? get answers => _answers;
   set answers(List<int>? answers) => _answers = answers;
-  double? get score => _score;
-  set score(double? score) => _score = score;
-  double? get prizeEarned => _prizeEarned;
-  set prizeEarned(double? prizeEarned) => _prizeEarned = prizeEarned;
+  num? get score => _score;
+  set score(num? score) => _score = score;
+  num? get prizeEarned => _prizeEarned;
+  set prizeEarned(num? prizeEarned) => _prizeEarned = prizeEarned;
   String? get sId => _sId;
   set sId(String? sId) => _sId = sId;
   String? get createdAt => _createdAt;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-class BaseTextField extends StatefulWidget {
+class BaseTextField extends StatelessWidget {
   final String name;
   final String? hintText;
   final String? helperText;
@@ -10,6 +10,7 @@ class BaseTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String initialValue;
+  final bool enabled;
   const BaseTextField({
     Key? key,
     required this.name,
@@ -20,26 +21,24 @@ class BaseTextField extends StatefulWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.initialValue = "",
+    this.enabled = true,
   }) : super(key: key);
 
   @override
-  State<BaseTextField> createState() => _BaseTextFieldState();
-}
-
-class _BaseTextFieldState extends State<BaseTextField> {
-  @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
-      name: widget.name,
-      obscureText: widget.obscureText,
-      keyboardType: widget.keyboardType,
-      initialValue: widget.initialValue,
+      key: Key(initialValue.toString()),
+      name: name,
+      enabled: enabled,
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      initialValue: initialValue,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
-        hintText: widget.hintText ?? "",
-        helperText: widget.helperText ?? "",
-        counterText: widget.counterText ?? "",
-        labelText: widget.labelText ?? "",
+        hintText: hintText ?? "",
+        helperText: helperText ?? "",
+        counterText: counterText ?? "",
+        labelText: labelText ?? "",
       ),
     );
   }
