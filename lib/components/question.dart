@@ -46,11 +46,6 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     });
   }
 
-  Uint8List getBase64() {
-    String uri = widget.question.base64!;
-    return base64.decode(uri.split(',').last);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -64,11 +59,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           textAlign: TextAlign.justify,
         ),
         const SizedBox(height: 15),
-        widget.question.base64 != null
-            ? Image.memory(
-                getBase64(),
-                fit: BoxFit.cover,
-              )
+        widget.question.imagePath != null
+            ? Image.network(
+                "http://localhost:3001/" + widget.question.imagePath!)
             : Container(),
         const SizedBox(height: 15),
         Text(alternatives()),
