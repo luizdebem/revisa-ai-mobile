@@ -114,13 +114,21 @@ class Quiz {
 class Question {
   String? _statement;
   List<String>? _alternatives;
+  String? _base64;
 
-  Questions({String? statement, List<String>? alternatives}) {
+  Questions({
+    String? statement,
+    List<String>? alternatives,
+    String? base64,
+  }) {
     if (statement != null) {
       this._statement = statement;
     }
     if (alternatives != null) {
       this._alternatives = alternatives;
+    }
+    if (base64 != null) {
+      this._base64 = base64;
     }
   }
 
@@ -128,16 +136,20 @@ class Question {
   set statement(String? statement) => _statement = statement;
   List<String>? get alternatives => _alternatives;
   set alternatives(List<String>? alternatives) => _alternatives = alternatives;
+  String? get base64 => _base64;
+  set base64(String? base64) => _base64 = base64;
 
   Question.fromJson(Map<String, dynamic> json) {
     _statement = json['statement'];
     _alternatives = json['alternatives'].cast<String>();
+    _base64 = json['base64'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['statement'] = this._statement;
     data['alternatives'] = this._alternatives;
+    data['base64'] = this._base64;
     return data;
   }
 }

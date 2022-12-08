@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:revisa_ai_mobile/models/quiz_model.dart';
 
@@ -43,6 +46,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     });
   }
 
+  Uint8List getBase64() {
+    String uri = widget.question.base64!;
+    return base64.decode(uri.split(',').last);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,10 +64,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
           textAlign: TextAlign.justify,
         ),
         const SizedBox(height: 15),
-        Image.network(
-          "https://s2.static.brasilescola.uol.com.br/be/2022/06/2-mapa-mundi.jpg",
-          width: double.infinity,
-        ),
+        widget.question.base64 != null
+            ? Image.memory(
+                getBase64(),
+                fit: BoxFit.cover,
+              )
+            : Container(),
         const SizedBox(height: 15),
         Text(alternatives()),
         const SizedBox(height: 15),
