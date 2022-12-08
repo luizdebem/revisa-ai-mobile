@@ -52,7 +52,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Revisa Aí"),
+        title: Text(quiz.title!),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
