@@ -14,4 +14,11 @@ class LoginService {
       data: {},
     );
   }
+
+  static signup(Map data) {
+    return HttpClient.dio().post(
+      "/users",
+      data: data,
+    );
+  }
 }
